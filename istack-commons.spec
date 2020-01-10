@@ -1,6 +1,6 @@
 Name:           istack-commons
 Version:        2.17
-Release:        2%{?dist}
+Release:        4%{?dist}
 Summary:        Common code for some Glassfish projects
 Group:          Development/Libraries
 License:        CDDL and GPLv2 with exceptions
@@ -18,7 +18,6 @@ BuildRequires:  ant-junit
 BuildRequires:  args4j
 BuildRequires:  bea-stax-api
 BuildRequires:  codemodel >= 2.6-4
-BuildRequires:  cobertura-maven-plugin
 BuildRequires:  dom4j
 BuildRequires:  java-devel
 BuildRequires:  jpackage-utils
@@ -79,6 +78,7 @@ rm -rf test/lib/*.zip runtime/lib/*.zip
 %pom_remove_plugin org.glassfish.copyright:glassfish-copyright-maven-plugin
 %pom_remove_plugin org.codehaus.mojo:findbugs-maven-plugin
 %pom_remove_plugin org.codehaus.mojo:buildnumber-maven-plugin
+%pom_remove_plugin org.codehaus.mojo:cobertura-maven-plugin
 
 %build
 
@@ -155,7 +155,13 @@ cp -p soimp/pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{name}-soimp.pom
 
 
 %changelog
-* Fri Jul 26 2013 Ade Lee <alee@rdhat.com> - 2.17-2
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 2.17-4
+- Mass rebuild 2013-12-27
+
+* Fri Dec 6 2013 Ade Lee <alee@redhat.com> - 2.17-3
+- Remove cobertura dependency
+ 
+* Fri Jul 26 2013 Ade Lee <alee@redhat.com> - 2.17-2
 - Bugzilla BZ#988933 - Removed unneeded build dependencies.
 
 * Thu May 16 2013 Tom Callaway <spot@fedoraproject.org> - 2.17-1
